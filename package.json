@@ -2,6 +2,11 @@
 	"name": "vite-plugin-limbo",
 	"version": "0.0.1",
 	"type": "module",
+	"keywords": [
+		"limbo",
+		"llm",
+		"ai"
+	],
 	"scripts": {
 		"build": "tsup"
 	},

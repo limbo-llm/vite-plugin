@@ -2,7 +2,7 @@ import fs from "node:fs";
 import type { Plugin } from "vite";
 import { reloadPlugin } from "./utils";
 
-export declare namespace limboPlugin {
+export declare namespace plugin {
 	interface Options {
 		/**
 		 * The path of the main plugin file
@@ -27,7 +27,7 @@ export declare namespace limboPlugin {
 	}
 }
 
-export function plugin(opts?: limboPlugin.Options): Plugin {
+export function plugin(opts?: plugin.Options): Plugin {
 	let pluginManifestRaw;
 
 	try {
