@@ -1,0 +1,34 @@
+{
+	"name": "vite-plugin-limbo",
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"build": "tsup"
+	},
+	"files": [
+		"package.json",
+		"dist"
+	],
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.ts",
+				"default": "./dist/index.js"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	},
+	"peerDependencies": {
+		"vite": "^6.2.5"
+	},
+	"devDependencies": {
+		"@types/node": "^22.14.0",
+		"prettier": "^3.5.3",
+		"tsup": "^8.4.0",
+		"typescript": "^5.8.3",
+		"vite": "^6.2.5"
+	}
+}
