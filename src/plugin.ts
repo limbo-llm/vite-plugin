@@ -40,6 +40,8 @@ export function plugin(opts?: plugin.Options): Plugin {
 
 	const pluginManifest = JSON.parse(pluginManifestRaw);
 
+	let isWatchMode = false;
+
 	return {
 		name: "limbo",
 		apply: "build",
@@ -63,7 +65,14 @@ export function plugin(opts?: plugin.Options): Plugin {
 				},
 			};
 		},
+		configResolved(config) {
+			isWatchMode = !!config.build.watch;
+		},
 		async closeBundle() {
+			if (!isWatchMode) {
+				return;
+			}
+
 			try {
 				await reloadPlugin({
 					pluginId: pluginManifest.id,
