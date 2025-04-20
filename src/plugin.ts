@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import type { Plugin } from "vite";
 import { reloadPlugin } from "./utils";
+import { builtinModules } from "node:module";
 
 export declare namespace plugin {
 	interface Options {
@@ -60,7 +61,12 @@ export function plugin(opts?: plugin.Options): Plugin {
 					},
 					rollupOptions: {
 						...config.build?.rollupOptions,
-						external: ["limbo", "react"],
+						external: [
+							"limbo",
+							"react",
+							...builtinModules,
+							...builtinModules.map((m) => `node:${m}`),
+						],
 					},
 				},
 			};
